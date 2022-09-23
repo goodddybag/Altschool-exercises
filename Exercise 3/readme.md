@@ -8,7 +8,36 @@ Generate SSH keys for the user in the admin group
 
 Submit the contents of /etc/passwd, /etc/group, /etc/sudoers
 
-### Answers
+### Steps
+sudo groupadd admin
+
+sudo groupadd support
+
+sudo groupadd engineering
+
+sudo useradd goodness
+
+sudo useradd glory
+
+sudo useradd flourish
+
+sudo usermod -aG sudo admin
+
+su admin
+
+ssh-keygen
+
+cat /etc/passwd
+
+cat /etc/group
+
+sudo /cat/etc/sudoers
+
+
+#### Answers
+
+
+etc/passwd Output
 
 ```
 root:x:0:0:root:/root:/bin/bash
@@ -49,6 +78,8 @@ goodness:x:1002:1002::/home/goodness:/bin/sh
 glory:x:1003:1003::/home/glory:/bin/sh
 flourish:x:1004:1004::/home/flourish:/bin/sh
 ```
+
+etc/group Output
 
 ```
 cdrom:x:24:ubuntu
@@ -102,6 +133,8 @@ support:x:1005:glory
 engineering:x:1006:flourish
 
 ```
+
+etc/sudoers Output
 
 ```
 #
