@@ -16,6 +16,7 @@ Submit your work in a folder for this exercise in your altschool-cloud-exercises
  ##### Example
 
 ![df -m command](Screenshots/df%20-m%20command.png)
+
 #### du -h 
 
 estimate file space usage
