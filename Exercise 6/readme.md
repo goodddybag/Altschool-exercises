@@ -25,14 +25,14 @@ https://gitlab.com/goodddybag
 
 git config -l
 
-![git config -l](../Screenshot/git%20config%20-l.png)
+![git config -l](Screenshot/git%20config%20-l.png)
 
 git remote -v
 
-![git remote -v](../Screenshot/git%20remote%20-v.png)
+![git remote -v](Screenshot/git%20remote%20-v.png)
 
 git log
 
-![git log](../Screenshot/git%20log.png)
+![git log](Screenshot/git%20log.png)
 
 
