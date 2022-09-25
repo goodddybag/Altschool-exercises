@@ -1,4 +1,4 @@
-# Exercise 2
+# Exercise 4
 
 
 Task: Install PHP 7.4 on your local linux machine using the ppa:ondrej/php package repo.
