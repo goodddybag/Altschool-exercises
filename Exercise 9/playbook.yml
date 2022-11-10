@@ -1,0 +1,35 @@
+- name: Server Setup
+  hosts: all
+  become: true
+  vars:
+    apache_public_root: /var/www/html/
+  tasks:
+    - name: Install Apache and PHP
+      ansible.builtin.package:
+        name:
+          - apache2
+          - php
+          - libapache2-mod-php
+        state: present
+        update_cache: true
+
+    - name: Start Apache
+      ansible.builtin.service:
+        name: apache2
+        state: started
+
+    - name: Set timezone
+      timezone:
+        name: Africa/Lagos
+
+    - name: Copy index.php file
+      ansible.builtin.copy:
+        src: index.php
+        dest: "{{ apache_public_root }}"
+        mode: u=rw,g=r,o=r
+
+    - name: Remove default index.html file
+      ansible.builtin.file:
+        path: "{{ apache_public_root }}index.html"
+        state: absent
+
