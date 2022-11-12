@@ -1,0 +1,46 @@
+---
+- name: My SQL
+  hosts: all
+  remote_user: root
+  become: yes
+
+  vars_files:
+    - vars/config
+
+  tasks:
+
+    - name: Update and upgrade apt packages
+      become: true
+      apt:
+        upgrade: yes
+        update_cache: yes
+
+    - name: Setting timezone to Africa/Lagos
+      community.general.timezone:
+        name: Africa/Lagos
+
+    - name: install mysql
+      ansible.builtin.package:
+        name:
+          - mysql-server
+          - mysql-client
+          - python3-mysqldb
+          - libmysqlclient-dev
+        update_cache: yes
+        state: present
+
+    - name: copy .conf file with mysql credentials
+      copy:
+        src: .my.cnf
+        dest: /root/.my.cnf
+        owner: root
+        group: root
+        mode: 0600
+
+    - name: Create mysql root password
+      community.mysql.mysql_user:
+        name: "{{ db_username }}"
+        password: "{{ db_password }}"
+        host: 'localhost'
+        state: present
+        login_user: root

@@ -1,0 +1,21 @@
+<IfModule mod_ssl.c>
+<VirtualHost *:443>
+        ServerName goodybag.rocks
+        ServerAlias www.goodybag.rocks
+        DocumentRoot /var/www/html/myapp/public
+
+        <Directory /var/www/html/myapp/public/>
+                AllowOverride All
+                Require all granted
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+
+Include /etc/letsencrypt/options-ssl-apache.conf
+SSLCertificateFile /etc/letsencrypt/live/goodybag.rocks/fullchain.pem
+SSLCertificateKeyFile /etc/letsencrypt/live/goodybag.rocks/privkey.pem
+</VirtualHost>
+</IfModule>
+
